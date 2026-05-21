@@ -1,0 +1,24 @@
+:host {
+  //   background-color: white;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .wrapper__login {
+    width: 300px;
+    padding: 10px 10px;
+
+    .inputs__login {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+      gap: 5px;
+    }
+    .buttons__login {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+    }
+  }
+}
