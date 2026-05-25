@@ -21,6 +21,10 @@
       margin-bottom: 10px;
       gap: 5 px;
     }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
     .buttons__login {
       display: flex;
       justify-content: center;

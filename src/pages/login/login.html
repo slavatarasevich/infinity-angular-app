@@ -16,9 +16,9 @@
     </div>
     <div class="buttons__login">
       <button class="login-button" (click)="logIn()">Login</button>
-      <button class="register-button" (click)="resetMyForm()">Register</button>
+      <button class="register-button"><a routerLink="/reg-page">Register</a></button>
     </div>
   </form>
-  <span>Data {{ myForm.status }}</span>
+  <!-- <span>Data {{ myForm.status }}</span> -->
 </div>
 <router-outlet></router-outlet>

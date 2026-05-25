@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
+
 
 interface User {
   id: number;
@@ -12,7 +12,7 @@ interface User {
 
 @Component({
   selector: 'app-registration',
-  imports: [RouterOutlet, ReactiveFormsModule, JsonPipe],
+  imports: [RouterOutlet, ReactiveFormsModule, RouterLink],
   templateUrl: './registration.html',
   styleUrl: './registration.scss',
 })
