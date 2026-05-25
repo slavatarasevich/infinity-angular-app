@@ -1,0 +1,21 @@
+<h1 style="color: rgb(236, 236, 236)">Registration</h1>
+<div class="wrapper__registration">
+  <div class="inputs__registration">
+    <input placeholder="name" type="text" [formControl]="name" />
+
+    <input placeholder="last name" type="text" [formControl]="lastName" />
+
+    <input placeholder="city" type="text" [formControl]="city" />
+  </div>
+</div>
+<button on-click="registerHandler()">Register Me</button>
+
+@for (user of users; track user.id) {
+  <p>______________________</p>
+  <p>{{ user.name }}</p>
+  <p>{{ user.lastName }}</p>
+  <span>{{ user.city }}</span>
+  <p>______________________</p>
+}
+
+<router-outlet> </router-outlet>

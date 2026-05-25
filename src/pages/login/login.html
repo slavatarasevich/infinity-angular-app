@@ -4,13 +4,21 @@
     <div class="inputs__login">
       <label for="login">login</label>
       <input type="text" formControlName="login" />
+      @if (!myForm.controls.login.valid && myForm.controls.login.touched) {
+        <span style="font-size: 10px; color: red">Это поле обязательно к заполнению</span>
+      }
+
       <label for="password">password</label>
       <input type="text" formControlName="password" />
+      @if (!myForm.controls.password.valid && myForm.controls.password.touched) {
+        <span style="font-size: 10px; color: red">Это поле обязательно к заполнению</span>
+      }
     </div>
     <div class="buttons__login">
       <button class="login-button" (click)="logIn()">Login</button>
-      <button class="register-button">Register</button>
+      <button class="register-button" (click)="resetMyForm()">Register</button>
     </div>
   </form>
+  <span>Data {{ myForm.status }}</span>
 </div>
 <router-outlet></router-outlet>

@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnChanges, OnInit, signal, SimpleChanges, WritableSignal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 
@@ -15,13 +15,28 @@ export class Login implements OnInit {
     login: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
-  logIn() {
-    console.log('TEST');
-    console.log(this.myForm.status);
-    console.log(this.myForm.value);
 
-    // console.log(this.myForm.value);
+  isValidForm: WritableSignal<boolean> = signal(true);
+
+  logIn() {
+    if (this.myForm.valid) {
+      console.log('signal', this.isValidForm());
+      console.log(this.myForm.status);
+      console.log(this.myForm.value);
+      this.myForm.reset({ login: '', password: '' });
+    } //else {
+    //   //
+    //   console.log('Fill out the form');
+    //   alert('Заполните все поля формы');
+    // }
   }
 
-  ngOnInit(): void {}
+  resetMyForm() {
+    this.myForm.reset({ login: '', password: '' });
+    console.log('reset');
+  }
+
+  ngOnInit(): void {
+    console.log('ngOnInit worked');
+  }
 }
