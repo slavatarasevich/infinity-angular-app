@@ -1,12 +1,16 @@
 <div class="wrapper__login">
   <h1>LOGIN</h1>
-  <div class="inputs__login">
-    <input type="text" />
-    <input type="text" />
-  </div>
-  <div class="buttons__login">
-    <button class="login-button">Login</button>
-    <button class="register-button">Register</button>
-  </div>
+  <form [formGroup]="myForm">
+    <div class="inputs__login">
+      <label for="login">login</label>
+      <input type="text" formControlName="login" />
+      <label for="password">password</label>
+      <input type="text" formControlName="password" />
+    </div>
+    <div class="buttons__login">
+      <button class="login-button" (click)="logIn()">Login</button>
+      <button class="register-button">Register</button>
+    </div>
+  </form>
 </div>
 <router-outlet></router-outlet>
