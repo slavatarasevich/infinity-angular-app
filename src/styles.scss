@@ -1,10 +1,6 @@
-/* Box sizing rules */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-/* 2. Remove default margin */
+@import 'fonts';
+
+// /* 2. Remove default margin
 *:not(dialog) {
   margin: 0;
 }
@@ -43,12 +39,15 @@ ol[role='list'] {
   list-style: none;
 }
 
-body {
+:root {
   --main-bg-color: rgb(12, 11, 11);
   --primary-color: white;
   --secondary-color: rgb(241, 77, 241);
+}
 
+body {
   background: var(--main-bg-color);
+  font-family: 'JetBrains Mono', sans-serif;
 }
 
 button {
