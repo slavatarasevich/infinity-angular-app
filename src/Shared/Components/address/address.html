@@ -1,0 +1,7 @@
+<form [formGroup]="addressForm">
+  <h1>Shipping address:</h1>
+  <input placeholder="street" type="text" formControlName="street" />
+  <input placeholder="city" type="text" formControlName="city" />
+  <input placeholder="zipCode" type="text" formControlName="zipCode" />
+  <button on-click="submitAddress()">Submit</button>
+</form>

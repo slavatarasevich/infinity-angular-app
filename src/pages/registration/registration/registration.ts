@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-
+import { Dialog } from '@angular/cdk/dialog';
+import { Address } from '../../../Shared/Components/address/address';
 
 interface User {
   id: number;
@@ -21,9 +22,7 @@ export class RegPage {
   protected lastName = new FormControl();
   protected city = new FormControl();
   protected users: User[] = [];
-  constructor() {
-    console.log('Reg works!');
-  }
+  private dialog = inject(Dialog);
 
   registerHandler() {
     const user = {
@@ -35,5 +34,10 @@ export class RegPage {
 
     this.users.push(user);
     console.log(this.users);
+  }
+
+  protected openModal() {
+    this.dialog.open(Address);
+    console.log('open modal');
   }
 }

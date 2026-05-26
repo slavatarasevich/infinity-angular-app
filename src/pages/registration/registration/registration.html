@@ -9,6 +9,7 @@
   </div>
 </div>
 <button on-click="registerHandler()">Register Me</button>
+<button (click)="openModal()" class="pop-up-button">PopUp Window</button>
 
 @for (user of users; track user.id) {
   <p>______________________</p>
