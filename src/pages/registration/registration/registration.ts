@@ -37,7 +37,7 @@ export class RegPage {
   }
 
   protected openModal() {
-    this.dialog.open(Address);
+    this.dialog.open(Address, { disableClose: true });
     console.log('open modal');
   }
 }

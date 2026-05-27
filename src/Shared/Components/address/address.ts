@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-
+import { DialogRef } from '@angular/cdk/dialog';
 @Component({
   selector: 'app-address',
   imports: [ReactiveFormsModule],
@@ -20,5 +20,10 @@ export class Address {
       console.log(this.addressForm.value);
       this.addressForm.reset({ street: '', city: '', zipCode: '' });
     }
+  }
+
+  protected dialogRef = inject(DialogRef, { optional: true });
+  closeAddressModal() {
+    this.dialogRef?.close();
   }
 }
