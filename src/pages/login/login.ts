@@ -1,5 +1,6 @@
+import { Users } from './../../Shared/Components/users/users';
 import { Component, OnInit, signal, WritableSignal, inject } from '@angular/core';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import { RouterOutlet, RouterLink, Router } from '@angular/router';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { UserInterface } from '../../Shared/Interfaces/user-interface';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -14,7 +15,7 @@ import { GetUsersService } from '../../Shared/Services/getUsers/getUsers-service
 export class Login implements OnInit {
   protected users = inject(GetUsersService);
   usersList: UserInterface[] = [];
-
+  protected router = inject(Router);
   myForm = new FormGroup({
     login: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
@@ -25,8 +26,12 @@ export class Login implements OnInit {
   logIn() {
     if (this.myForm.valid) {
       this.usersList.forEach((user) => {
-        if (user.email === this.myForm.controls.login.value) {
-          return console.log('user found');
+        if (
+          user.email === this.myForm.controls.login.value &&
+          user.username === this.myForm.controls.password.value
+        ) {
+          localStorage.setItem('email', this.myForm.controls.login.value);
+          this.router.navigateByUrl('/users');
         }
         // console.log('user not found');
       });
