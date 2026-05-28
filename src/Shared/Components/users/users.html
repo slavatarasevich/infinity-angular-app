@@ -1,7 +1,11 @@
 <h1>USERS</h1>
-@for (user of listOfUsers; track user.id) {
-  <span>user.id</span>
-  <h2>user.name</h2>
+
+@for (user of listOfUsers(); track user.id) {
+  <div class="user-card">
+    <span>ID: {{ user.id }}</span>
+    <h2>{{ user.name }}</h2>
+    <p>{{ user.email }}</p>
+  </div>
 }
 
 <router-outlet> </router-outlet>

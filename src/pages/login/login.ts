@@ -1,8 +1,9 @@
-import { Component, OnChanges, OnInit, signal, SimpleChanges, WritableSignal } from '@angular/core';
+import { Component, OnInit, signal, WritableSignal, inject } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-
+import { UserInterface } from '../../Shared/Interfaces/user-interface';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GetUsersService } from '../../Shared/Services/getUsers/getUsers-service';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrl: './login.scss',
 })
 export class Login implements OnInit {
+  protected users = inject(GetUsersService);
+  usersList: UserInterface[] = [];
+
   myForm = new FormGroup({
     login: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
@@ -20,15 +24,14 @@ export class Login implements OnInit {
 
   logIn() {
     if (this.myForm.valid) {
-      console.log('signal', this.isValidForm());
-      console.log(this.myForm.status);
-      console.log(this.myForm.value);
-      this.myForm.reset({ login: '', password: '' });
-    } //else {
-    //   //
-    //   console.log('Fill out the form');
-    //   alert('Заполните все поля формы');
-    // }
+      this.usersList.forEach((user) => {
+        if (user.email === this.myForm.controls.login.value) {
+          return console.log('user found');
+        }
+        // console.log('user not found');
+      });
+      this.myForm.reset({ login: '', password: '' }); // uncomment when login works
+    }
   }
 
   resetMyForm() {
@@ -38,5 +41,9 @@ export class Login implements OnInit {
 
   ngOnInit(): void {
     console.log('ngOnInit worked');
+    this.users.getUsers().subscribe((data) => {
+      console.log(data);
+      this.usersList = data;
+    });
   }
 }
